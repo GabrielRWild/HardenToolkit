@@ -2,6 +2,16 @@
 AUTH_ADMINS="Legolas Gimli Gloin Boromir arwen aragorn"
 AUTH_USERS="thorin sting gandalf thorin radagast"
 
+read -r -p "Would you like to continue? [y/n] " answer
+
+case "$answer" in
+    [Yy]) ;;
+    [Nn]) echo "Quitting."; exit 0 ;;
+    *)    echo "Please answer y or n."; exit 1 ;;
+esac
+
+
+
 if [ "$(id -u)" -ne 0 ]; then
     echo "Error: please run with sudo, Gimli"
     exit 1
@@ -45,4 +55,10 @@ while IFS=: read -r user pass uid gid info home shell; do
 done < /etc/passwd
 
 echo "I did way better than that beastly dwarf >Legolas, nope >Gimli"
-echo "========== SECURING COMPLETE =========="
+echo "============ SECURING COMPLETE ============="
+
+
+echo " "
+echo "========== Begining User Commands =========="
+
+#type you commands here that you would like to run. like a new group etc.
