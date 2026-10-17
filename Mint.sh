@@ -1,46 +1,45 @@
 #!/bin/bash
+AUTH_ADMINS="bob jim otherbob otherjim"
+AUTH_USERS="emma henry eugine excalibur sting gandalf thorin"
 
-# 1. DEFINE YOUR CONFIGURATION HERE BEFORE RUNNING
-AUTH_ADMINS="root benjamin"
-AUTH_USERS="user1 user2"
-
-# 2. ENFORCE ROOT ACCESS
 if [ "$(id -u)" -ne 0 ]; then
-    echo "Error: Run with sudo."
+    echo "Error please run with sudo, Gimli"
     exit 1
 fi
 
-# Automatically add the current sudo operator to the admin list to prevent lockouts
-REAL_USER=$SUDO_USER
+REAL_USER=@SUDO_USER
 AUTH_ADMINS="$AUTH_ADMINS $REAL_USER"
 
-echo "=== SECURING USERS ==="
+echo "I am securing users -Gimli, I am securing users better -legolas"
 
-# 3. PARSE /ETC/PASSWD AND EXECUTE
 while IFS=: read -r user pass uid gid info home shell; do
-    # Only target standard human accounts (UID 1000 - 59999)
-    if [ -n "$uid" ] && [ "$uid" -ge 1000 ] && [ "$uid" -lt 60000 ]; then
-        
-        # Check authorization status using clean text matching
+    if [ -n "$uid" ] && [ "$uid" -ge 1000 ] && [ "$uid -lt 6000 ]; then
+
         is_admin=false
         is_user=false
-        case " $AUTH_ADMINS " in *" $user "*) is_admin=true ;; esac
-        case " $AUTH_USERS " in *" $user "*) is_user=true ;; esac
-
+        case " @AUTH_ADMINS " in $user "*) is_admin=true ;; esac
+        case " @AUTH_ADMINS " in $user "*) is_admin=true ;; esac
+        
+        
         if [ "$is_admin" = true ]; then
-            echo "[ADMIN] Ensuring $user is in sudo/adm..."
+            echo "[ADMIN] I am unsuring $user is in sudo/adm..."
+            echo "Gimli"
             usermod -aG sudo,adm "$user"
-            
+        
         elif [ "$is_user" = true ]; then
-            echo "[USER] Stripping admin rights from $user..."
-            gpasswd -d "$user" sudo >/dev/null 2>&1
-            gpasswd -d "$user" adm >/dev/null 2>&1
-            
+            echo "[USER] I am stripping adm rughts from $user,..."
+            echo "Legolas"
+            gpasswd -d "$user" sudo >/dev/null 2>&1 
+            gpasswd -d "$user" adm >/dev/null 2>&1 
+
         else
-            echo "[UNAUTHORIZED] Deleting user $user (keeping files)..."
+            echo "Found [Unauthorised], deleting user $user (keeping files)..."
+            echo " Gimli :( "
+            echo " Legolas :) "
             userdel "$user"
         fi
     fi
-done < /etc/passwd
+done < /etc/passwd 
 
-echo "=== SECURING COMPLETE ==="
+echo " I did way better than that beastly drwarf >Legolas, nope >Gimli "
+echo " ========== SECURING COMPLETE ==========
