@@ -1,6 +1,6 @@
 #!/bin/bash
-AUTH_ADMINS="bob jim otherbob otherjim"
-AUTH_USERS="emma henry eugine excalibur sting gandalf thorin"
+AUTH_ADMINS="Legolas Gimli Gloin Boromir arwen aragorn"
+AUTH_USERS="thorin sting gandalf thorin radagast"
 
 if [ "$(id -u)" -ne 0 ]; then
     echo "Error: please run with sudo, Gimli"
