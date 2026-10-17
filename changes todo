@@ -1,0 +1,6 @@
+benjamin@mint:~/Downloads$ sudo ./Mint.sh
+[sudo] password for benjamin:                
+./Mint.sh: 277: [[: not found
+./Mint.sh: 282: [[: not found
+./Mint.sh: 289: [[: not found
+./Mint.sh: 313: Syntax error: word unexpected (expecting ")")
