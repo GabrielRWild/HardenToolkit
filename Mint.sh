@@ -16,7 +16,7 @@ while IFS=: read -r user pass uid gid info home shell; do
     [ -n "${user:-}" ] || continue
     [ -n "${uid:-}" ] || continue
 
-    if [ "$uid" -ge 1000 ] && [ "$uid" -lt 6000 ]; then
+    if [ "$uid" -ge 1000 ] && [ "$uid" -lt 60000 ]; then
         is_admin=false
         is_user=false
 
