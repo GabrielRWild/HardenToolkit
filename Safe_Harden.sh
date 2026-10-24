@@ -3,6 +3,14 @@
 AUTH_ADMINS="Legolas Gimli Gloin Boromir arwen aragorn"
 AUTH_USERS="thorin sting gandalf radagast"
 
+read -r -p "Would you like to continue [y/n] " answer
+
+case "$answer" in
+    [Yy]) ;;
+    [Nn]) echo "Quitting."; exit 0 ;;
+    *)    echo "Please answer y or n."; exit 1 ;;
+esac
+
 if [ "$(id -u)" -ne 0 ]; then
     echo "Error: please run with sudo."
     exit 1
@@ -44,3 +52,11 @@ done < /etc/passwd
 
 echo "----------------------------------------"
 echo "User scan complete."
+
+echo "-------- starting user commands --------"
+
+sudo apt update
+sudo apt upgrade -y
+
+
+#add any commands you think should be run such as sudo apt update, the script will run them in order.
