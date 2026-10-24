@@ -1,1 +1,4 @@
-password    requisite     pam_pwhistory.so remember=5 use_authtok
+for u in $(cut -d: -f1 /etc/passwd); do
+    echo "=== $u ==="
+    sudo faillock --user "$u"
+done
