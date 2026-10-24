@@ -5,6 +5,12 @@
     apt-get install ufw && ufw enable
 ## Enable SSH Remote Login
     sudo apt update && sudo apt install openssh-server -y
+    sudo systemctl enable ssh
+    sudo systemctl status ssh
+    sudo systemctl start ssh
+    sudo systemctl restart ssh
+
+
 ## SSH settings
 Turn off root in sshd_config (Covered)
 
