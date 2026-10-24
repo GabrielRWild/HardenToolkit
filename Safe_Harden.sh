@@ -3,6 +3,8 @@
 AUTH_ADMINS="Legolas Gimli Gloin Boromir arwen aragorn"
 AUTH_USERS="thorin sting gandalf radagast"
 
+echo "########### STARTING UP ##############"
+
 read -r -p "Would you like to continue [y/n] " answer
 
 case "$answer" in
