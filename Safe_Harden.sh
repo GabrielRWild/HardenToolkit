@@ -62,5 +62,12 @@ sudo apt upgrade -y
 
 #add any commands you think should be run such as sudo apt update, the script will run them in order.
 
+read -r -p "Would you like to get the faillock report [y/n] " answer
+
+case "$answer" in
+    [Yy]) ;;
+    [Nn]) echo "Quitting."; exit 0 ;;
+    *)    echo "Please answer y or n."; exit 1 ;;
+esac
 
 echo "########### SHUTTING DOWN ##############"
