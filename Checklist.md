@@ -9,7 +9,18 @@
     sudo systemctl status ssh
     sudo systemctl start ssh
     sudo systemctl restart ssh
+Back up the PAM configuration:
+bash
 
+
+sudo cp -a /etc/pam.d /etc/pam.d.backup
+Check the password-change rules and included files:
+bash
+
+
+sudo cat /etc/pam.d/passwd
+sudo grep -R -nE 'pam_.*\.so|include|@include' /etc/pam.d
+Check that every referenced pam_*.so module exists. The error can occur wh
 
 ## SSH settings
 Turn off root in sshd_config (Covered)
