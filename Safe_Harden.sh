@@ -58,6 +58,7 @@ echo "-------- starting user commands --------"
 echo ""
 sudo apt update
 sudo apt upgrade -y
+sudo apt full upgrade
 
 
 #add any commands you think should be run such as sudo apt update, the script will run them in order.
