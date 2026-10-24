@@ -1,9 +1,9 @@
 #!/bin/bash
 
-AUTH_ADMINS="Legolas Gimli Gloin Boromir arwen aragorn"
-AUTH_USERS="thorin sting gandalf radagast"
+AUTH_ADMINS="pparker tstark ppotta hhogan nfury"
+AUTH_USERS="bbanner cbarton swilson bbarnes sstrange wmaximoff slang slang cdanvers jrhodes hvandyne shuri okoye "
 
-echo "########### STARTING UP ##############"
+echo "########### STARTING UP ###############"
 
 read -r -p "Would you like to continue [y/n] " answer
 
@@ -24,7 +24,7 @@ AUTH_ADMINS="$AUTH_ADMINS $REAL_USER"
 echo "Scanning user accounts..."
 echo "Allowed admins: $AUTH_ADMINS"
 echo "Allowed users:  $AUTH_USERS"
-echo "----------------------------------------"
+echo ""
 
 while IFS=: read -r user pass uid gid info home shell; do
     [ -n "${user:-}" ] || continue
@@ -52,13 +52,15 @@ while IFS=: read -r user pass uid gid info home shell; do
     fi
 done < /etc/passwd
 
-echo "----------------------------------------"
 echo "User scan complete."
 
 echo "-------- starting user commands --------"
-
+echo ""
 sudo apt update
 sudo apt upgrade -y
 
 
 #add any commands you think should be run such as sudo apt update, the script will run them in order.
+
+
+echo "########### SHUTTING DOWN ##############"
