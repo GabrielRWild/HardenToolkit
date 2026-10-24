@@ -3,6 +3,8 @@
 ## Automatic updates in GUI (Not covered)
 ## Firewall (Covered)
     apt-get install ufw && ufw enable
+## Enable SSH Remote Login
+    sudo apt update && sudo apt install openssh-server -y
 ## SSH settings
 Turn off root in sshd_config (Covered)
 
